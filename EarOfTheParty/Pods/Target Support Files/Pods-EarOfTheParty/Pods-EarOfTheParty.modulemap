@@ -1,0 +1,6 @@
+framework module Pods_EarOfTheParty {
+  umbrella header "Pods-EarOfTheParty-umbrella.h"
+
+  export *
+  module * { export * }
+}
