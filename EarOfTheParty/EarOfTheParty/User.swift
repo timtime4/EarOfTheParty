@@ -12,6 +12,7 @@ import Firebase
 class User {
     let uid: String
     let email: String
+    var parties : [Party] = []
     
     // Initialize from Firebase
     init(authData: FAuthData) {

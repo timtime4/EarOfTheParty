@@ -105,10 +105,10 @@
             </objects>
             <point key="canvasLocation" x="2004" y="744"/>
         </scene>
-        <!--Host-->
+        <!--My Parties-->
         <scene sceneID="O5N-RA-8jM">
             <objects>
-                <viewController id="WhP-oA-5S8" customClass="HostViewController" customModule="EarOfTheParty" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="My Parties" id="WhP-oA-5S8" customClass="HostViewController" customModule="EarOfTheParty" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SOD-XK-pio"/>
                         <viewControllerLayoutGuide type="bottom" id="qLv-cg-eLj"/>
@@ -116,14 +116,124 @@
                     <view key="view" contentMode="scaleToFill" id="7io-A3-G2E">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ic5-8t-bSZ">
+                                <rect key="frame" x="20" y="20" width="560" height="531"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="partyCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="partyCell" id="zSw-Yb-4Nl">
+                                        <rect key="frame" x="0.0" y="92" width="560" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zSw-Yb-4Nl" id="et4-nq-8Ws">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <connections>
+                                            <segue destination="HP1-uj-yDx" kind="show" identifier="partiesToPartyInfo" id="ray-eX-q9f"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="WhP-oA-5S8" id="Mgn-V7-mQR"/>
+                                    <outlet property="delegate" destination="WhP-oA-5S8" id="qiu-ac-zkR"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ic5-8t-bSZ" firstAttribute="leading" secondItem="7io-A3-G2E" secondAttribute="leadingMargin" id="B31-b2-Vnx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ic5-8t-bSZ" secondAttribute="trailing" id="GoM-pt-WMF"/>
+                            <constraint firstItem="qLv-cg-eLj" firstAttribute="top" secondItem="ic5-8t-bSZ" secondAttribute="bottom" id="Seg-qm-U8d"/>
+                            <constraint firstItem="ic5-8t-bSZ" firstAttribute="top" secondItem="SOD-XK-pio" secondAttribute="bottom" id="xJH-ze-0Qt"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Host" id="rqp-PT-Ebs" userLabel="Host"/>
+                    <navigationItem key="navigationItem" id="mr3-7s-OeD">
+                        <barButtonItem key="rightBarButtonItem" title="New Party" id="EhG-cu-PZl"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="partiesTableView" destination="ic5-8t-bSZ" id="uf6-jS-zlF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zue-eM-tMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1976" y="-253"/>
+            <point key="canvasLocation" x="2788" y="-253"/>
+        </scene>
+        <!--Party 1-->
+        <scene sceneID="5Dh-9K-oac">
+            <objects>
+                <viewController title="Party 1" id="HP1-uj-yDx" customClass="PartyViewController" customModule="EarOfTheParty" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6Qa-si-Yfr"/>
+                        <viewControllerLayoutGuide type="bottom" id="EOw-Wj-cK8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7kx-Q2-UJC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W98-tI-NC1">
+                                <rect key="frame" x="20" y="64" width="560" height="487"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="songCell" id="8lm-Hx-wDk">
+                                        <rect key="frame" x="0.0" y="92" width="560" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8lm-Hx-wDk" id="5tz-07-UVF">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="W98-tI-NC1" firstAttribute="top" secondItem="6Qa-si-Yfr" secondAttribute="bottom" id="Srk-sd-zPU"/>
+                            <constraint firstItem="W98-tI-NC1" firstAttribute="leading" secondItem="7kx-Q2-UJC" secondAttribute="leadingMargin" id="baO-iz-jpn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="W98-tI-NC1" secondAttribute="trailing" id="lpO-eR-UMb"/>
+                            <constraint firstItem="EOw-Wj-cK8" firstAttribute="top" secondItem="W98-tI-NC1" secondAttribute="bottom" id="pWb-fA-RtQ"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="wue-uA-iON">
+                        <barButtonItem key="rightBarButtonItem" title="New Song" id="hre-9t-Rz4">
+                            <connections>
+                                <segue destination="2hY-92-d54" kind="presentation" id="nsg-vc-iEX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ig-h0-quu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3489" y="-253"/>
+        </scene>
+        <!--Host Add Song View Controller-->
+        <scene sceneID="7nP-kS-TOc">
+            <objects>
+                <viewController id="2hY-92-d54" customClass="HostAddSongViewController" customModule="EarOfTheParty" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F60-fF-7rN"/>
+                        <viewControllerLayoutGuide type="bottom" id="akz-Rx-BuF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VjA-k5-VkY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bcl-lA-E59" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4289" y="-253"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Jjd-E0-N75">
@@ -136,13 +246,33 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="WhP-oA-5S8" kind="relationship" relationship="viewControllers" id="6mQ-wL-XKi"/>
+                        <segue destination="FGC-Gk-uSl" kind="relationship" relationship="viewControllers" id="6mQ-wL-XKi"/>
                         <segue destination="KUJ-95-sLb" kind="relationship" relationship="viewControllers" id="STX-lc-HKa"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JJO-lN-D12" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1258" y="277"/>
+        </scene>
+        <!--My Parties-->
+        <scene sceneID="OYq-p8-FxK">
+            <objects>
+                <navigationController title="My Parties" automaticallyAdjustsScrollViewInsets="NO" id="FGC-Gk-uSl" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Host" id="rqp-PT-Ebs" userLabel="Host"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="H5Z-w2-fJ3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WhP-oA-5S8" kind="relationship" relationship="rootViewController" id="TiM-4W-ZWe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1na-M4-wNd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1976" y="-253"/>
         </scene>
     </scenes>
 </document>
