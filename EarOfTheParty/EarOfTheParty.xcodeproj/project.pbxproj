@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5E2D45131CBC1CA800D22241 /* LoginInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D45121CBC1CA800D22241 /* LoginInViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		5E2D45191CBC436000D22241 /* HostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D45181CBC436000D22241 /* HostViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		5E2D451B1CBC443100D22241 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D451A1CBC443100D22241 /* User.swift */; settings = {ASSET_TAGS = (); }; };
-		5E2D451D1CBEDB8400D22241 /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D451C1CBEDB8400D22241 /* Party.swift */; settings = {ASSET_TAGS = (); }; };
-		5E2D451F1CBEE07700D22241 /* PartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D451E1CBEE07700D22241 /* PartyViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		5E2D45211CBEE0A400D22241 /* HostAddSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D45201CBEE0A400D22241 /* HostAddSongViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		5E2D45131CBC1CA800D22241 /* LoginInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D45121CBC1CA800D22241 /* LoginInViewController.swift */; };
+		5E2D45191CBC436000D22241 /* HostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D45181CBC436000D22241 /* HostViewController.swift */; };
+		5E2D451B1CBC443100D22241 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D451A1CBC443100D22241 /* User.swift */; };
+		5E2D451D1CBEDB8400D22241 /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D451C1CBEDB8400D22241 /* Party.swift */; };
+		5E2D451F1CBEE07700D22241 /* PartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D451E1CBEE07700D22241 /* PartyViewController.swift */; };
+		5E2D45211CBEE0A400D22241 /* HostAddSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D45201CBEE0A400D22241 /* HostAddSongViewController.swift */; };
 		5E4B63B91CBC13320071926A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4B63B81CBC13320071926A /* AppDelegate.swift */; };
 		5E4B63BE1CBC13320071926A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E4B63BC1CBC13320071926A /* Main.storyboard */; };
 		5E4B63C11CBC13320071926A /* EarOfTheParty.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E4B63BF1CBC13320071926A /* EarOfTheParty.xcdatamodeld */; };
@@ -172,6 +172,7 @@
 				TargetAttributes = {
 					5E4B63B41CBC13320071926A = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = N8HY8WFG95;
 					};
 				};
 			};
@@ -380,10 +381,14 @@
 			baseConfigurationReference = A6532692BA5F9932D4DE5D07 /* Pods-EarOfTheParty.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = EarOfTheParty/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TimPusateri.EarOfTheParty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -392,10 +397,14 @@
 			baseConfigurationReference = 647A6D18F0408690A04E1F8F /* Pods-EarOfTheParty.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = EarOfTheParty/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TimPusateri.EarOfTheParty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

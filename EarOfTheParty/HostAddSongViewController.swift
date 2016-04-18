@@ -7,11 +7,18 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class HostAddSongViewController: UIViewController {
+    
+    var songItems : [MPMediaItem]?
 
+    @IBOutlet weak var songTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.songItems = MPMediaQuery.songsQuery().items
+        print(songItems)
 
         // Do any additional setup after loading the view.
     }
@@ -19,6 +26,29 @@ class HostAddSongViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func tableView(songTableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        print("Loading Cell")
+        let cell = songTableView.dequeueReusableCellWithIdentifier("songCell",forIndexPath: indexPath)
+        
+        if  songItems?.count != 0 {
+            cell.textLabel?.text = songItems![indexPath.row].title as String!
+        }
+        
+        return cell
+        
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if self.songItems!.count != 0 {
+            return self.songItems!.count
+        } else {
+            return 0
+        }
+        
     }
     
 
