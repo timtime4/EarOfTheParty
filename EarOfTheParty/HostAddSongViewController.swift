@@ -12,6 +12,7 @@ import MediaPlayer
 class HostAddSongViewController: UIViewController {
     
     var songItems : [MPMediaItem]?
+    var selectedSong : MPMediaItem?
 
     @IBOutlet weak var songTableView: UITableView!
     override func viewDidLoad() {
@@ -41,6 +42,21 @@ class HostAddSongViewController: UIViewController {
         
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "unwindToPartyView" {
+            print("Unwinding to Party View, cell selected")
+            if let cell = sender as? UITableViewCell,
+                indexPath = self.songTableView.indexPathForCell(cell) {
+                print("Adding \(songItems![indexPath.row])")
+                self.selectedSong = songItems![indexPath.row]
+            } else {
+                print("error")
+            }
+        }
+    }
+    
+    
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if self.songItems!.count != 0 {
@@ -50,16 +66,8 @@ class HostAddSongViewController: UIViewController {
         }
         
     }
+
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

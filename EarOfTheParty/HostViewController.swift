@@ -15,6 +15,7 @@ class HostViewController: UIViewController {
     
     let ref = Firebase(url: "https://scorching-torch-7974.firebaseio.com/")
     var user : User?
+    var newParty : Party?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +36,6 @@ class HostViewController: UIViewController {
             }
         }
         
-
-
-
         // Do any additional setup after loading the view.
     }
 
@@ -76,15 +74,58 @@ class HostViewController: UIViewController {
         
     }
     
+    @IBAction func createNewParty(sender: AnyObject) {
+        // Alert View for input
+        let alert = UIAlertController(title: "New Party",
+                                      message: "Name Your Party",
+                                      preferredStyle: .Alert)
+        
+        let saveAction = UIAlertAction(title: "Save", style: .Default) {
+            (action: UIAlertAction) -> Void in
+                                        
+            let textField = alert.textFields![0]
+            self.newParty = Party(_name: textField.text!, _host: self.user!)
+            self.user?.parties.append(self.newParty!)
+            // Create Party on Firebase DB
+            let partyRef = self.ref.childByAppendingPath("parties")
+            
+            partyRef.setValue(self.newParty!.toAnyObject())
+            self.performSegueWithIdentifier("partiesToPartyInfo", sender: nil)
+
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .Default) { (action: UIAlertAction) -> Void in
+        }
+        
+        alert.addTextFieldWithConfigurationHandler {
+            (textField: UITextField!) -> Void in
+        }
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "partiesToPartyInfo" {
-            print("Going to Party Info")
+            
+            // Executes if sent by selecting existing party
             if let partyInfoVC = segue.destinationViewController as? PartyViewController,
                 cell = sender as? UITableViewCell,
                 indexPath = self.partiesTableView.indexPathForCell(cell) {
-            } else {
-                print("error")
+                    partyInfoVC.party = self.user?.parties[indexPath.row]
+            }
+            
+            // Executes if sent by tapping "New Party" button
+            if let partyInfoVC = segue.destinationViewController as? PartyViewController {
+                print("From 'new party' button")
+                if self.newParty != nil {
+                    partyInfoVC.party = self.newParty
+                }
             }
         }
     }

@@ -9,29 +9,51 @@
 import UIKit
 
 class PartyViewController: UIViewController {
-
+    
+    var party : Party?
+    
+    @IBOutlet weak var songTableView: UITableView!
+    @IBOutlet weak var navigationBar: UINavigationItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.navigationBar.title = self.party?.name
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func tableView(songTableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = songTableView.dequeueReusableCellWithIdentifier("songCell",forIndexPath: indexPath)
+        
+        if  party?.playlist.count != 0 {
+            cell.textLabel?.text = party?.playlist[indexPath.row].title
+        }
+        
+        return cell
+        
     }
-    */
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if self.party?.playlist.count != 0 {
+            return (self.party?.playlist.count)!
+        } else {
+            return 0
+        }
+    }
+    
+    // Unwind Action after Selecting song in HostAddSongController
+    @IBAction func addNewSong(segue: UIStoryboardSegue){
+        if let addNewSongVC = segue.sourceViewController as? HostAddSongViewController {
+            self.party?.playlist.append(addNewSongVC.selectedSong!)
+            self.songTableView.reloadData()
+        }
+    }
+
 
 }
