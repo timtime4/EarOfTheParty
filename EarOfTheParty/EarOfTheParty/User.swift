@@ -10,8 +10,8 @@ import Foundation
 import Firebase
 
 class User {
-    let uid: String
-    let email: String
+    let uid: String!
+    let email: String!
     var parties : [Party] = []
     
     // Initialize from Firebase

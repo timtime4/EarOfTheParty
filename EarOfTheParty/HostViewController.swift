@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import SwiftyJSON
+
 
 class HostViewController: UIViewController {
     
@@ -24,19 +26,32 @@ class HostViewController: UIViewController {
             if authData != nil {
                 dispatch_async(dispatch_get_main_queue(), {
                     self.user = User(authData: authData)
-                    print("1")
-                    print(self.user?.email)
                     
-                    self.user?.parties.append(Party(_name: "Test Party", _host: self.user!))
-                    
-                    print(self.user?.parties[0].name)
                     self.partiesTableView.reloadData()
                 })
-                
             }
         }
         
-        // Do any additional setup after loading the view.
+        ref.queryOrderedByChild("users").observeEventType(.ChildAdded, withBlock: { snapshot in
+            
+            let json = JSON(snapshot.value.objectForKey(self.user!.uid)!)
+            
+            print(json)
+            
+            for(_, party) in json["partiesHosting"] {
+                let name = party["name"].stringValue
+                let id = party["id"].stringValue
+                
+                let newParty = Party(_name: name, _host: self.user!, _partyID: id)
+                self.user?.parties.append(newParty)
+            }
+            
+            }, withCancelBlock: { error in
+                print(error.description)
+            
+        })
+        
+        self.partiesTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,12 +62,11 @@ class HostViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-
+        self.partiesTableView.reloadData()
     }
     
     func tableView(partiesTableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        print("Loading Cell")
         let cell = partiesTableView.dequeueReusableCellWithIdentifier("partyCell",forIndexPath: indexPath)
         
         if self.user != nil {
@@ -64,7 +78,6 @@ class HostViewController: UIViewController {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("count=\(self.user?.parties.count)?")
         
         if self.user != nil {
             return (self.user?.parties.count)!
@@ -86,16 +99,17 @@ class HostViewController: UIViewController {
             let textField = alert.textFields![0]
             self.newParty = Party(_name: textField.text!, _host: self.user!)
             self.user?.parties.append(self.newParty!)
-            // Create Party on Firebase DB
-            let partyRef = self.ref.childByAppendingPath("parties")
             
+            // Create Party on Firebase DB
+            let partyRef = self.ref.childByAppendingPath("users/\(self.user!.uid)/partiesHosting/\(self.newParty!.partyID)")
             partyRef.setValue(self.newParty!.toAnyObject())
+            
             self.performSegueWithIdentifier("partiesToPartyInfo", sender: nil)
 
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel",
-                                         style: .Default) { (action: UIAlertAction) -> Void in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Default) {
+            (action: UIAlertAction) -> Void in
         }
         
         alert.addTextFieldWithConfigurationHandler {
@@ -128,6 +142,11 @@ class HostViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func getPartiesHosting() -> Void {
+        
+
     }
     
 

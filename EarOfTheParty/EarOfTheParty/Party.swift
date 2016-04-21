@@ -15,17 +15,25 @@ class Party {
     var playlist : [MPMediaItem] = []
     var partyID : String!   // Unique Party Identifier
     
+    // Used for creating new parties and adding to Firebase
     init(_name : String, _host : User){
         name = _name
         host = _host
         partyID = NSUUID().UUIDString
     }
     
+    // Used for populating data from Firebase DB
+    init(_name: String, _host : User, _partyID : String){
+        name = _name
+        host = _host
+        partyID = _partyID
+    }
+    
     func toAnyObject() -> AnyObject {
         return [
-            "partyID": partyID,
             "name": name,
             "hostedByUser": host!.email,
+            "id": partyID
         ]
     }
 }

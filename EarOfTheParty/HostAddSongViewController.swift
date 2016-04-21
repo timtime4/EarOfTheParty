@@ -31,7 +31,6 @@ class HostAddSongViewController: UIViewController {
     
     func tableView(songTableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        print("Loading Cell")
         let cell = songTableView.dequeueReusableCellWithIdentifier("songCell",forIndexPath: indexPath)
         
         if  songItems?.count != 0 {
