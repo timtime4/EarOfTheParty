@@ -19,6 +19,7 @@
 		5E4B63C31CBC13320071926A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E4B63C21CBC13320071926A /* Assets.xcassets */; };
 		5E4B63C61CBC13320071926A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E4B63C41CBC13320071926A /* LaunchScreen.storyboard */; };
 		5E5DBCCC1CCE6CA1004116AB /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5DBCCB1CCE6CA1004116AB /* SongTableViewCell.swift */; };
+		5E5DBCCE1CCE8541004116AB /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5DBCCD1CCE8541004116AB /* Song.swift */; };
 		76DDD1109CE8CF5E40745C81 /* Pods_EarOfTheParty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 296F197ACD8A9A57E5E611BA /* Pods_EarOfTheParty.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		5E4B63C51CBC13320071926A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E4B63C71CBC13320071926A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E5DBCCB1CCE6CA1004116AB /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		5E5DBCCD1CCE8541004116AB /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Song.swift; path = ../Song.swift; sourceTree = "<group>"; };
 		647A6D18F0408690A04E1F8F /* Pods-EarOfTheParty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarOfTheParty.release.xcconfig"; path = "Pods/Target Support Files/Pods-EarOfTheParty/Pods-EarOfTheParty.release.xcconfig"; sourceTree = "<group>"; };
 		A6532692BA5F9932D4DE5D07 /* Pods-EarOfTheParty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarOfTheParty.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EarOfTheParty/Pods-EarOfTheParty.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +68,7 @@
 		5E2D45151CBC1CCD00D22241 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5E5DBCCD1CCE8541004116AB /* Song.swift */,
 				5E2D451A1CBC443100D22241 /* User.swift */,
 				5E2D451C1CBEDB8400D22241 /* Party.swift */,
 			);
@@ -267,6 +270,7 @@
 				5E2D45191CBC436000D22241 /* HostViewController.swift in Sources */,
 				5E2D45131CBC1CA800D22241 /* LoginInViewController.swift in Sources */,
 				5E4B63C11CBC13320071926A /* EarOfTheParty.xcdatamodeld in Sources */,
+				5E5DBCCE1CCE8541004116AB /* Song.swift in Sources */,
 				5E2D451B1CBC443100D22241 /* User.swift in Sources */,
 				5E2D451D1CBEDB8400D22241 /* Party.swift in Sources */,
 				5E5DBCCC1CCE6CA1004116AB /* SongTableViewCell.swift in Sources */,

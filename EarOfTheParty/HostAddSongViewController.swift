@@ -12,16 +12,14 @@ import MediaPlayer
 class HostAddSongViewController: UIViewController {
     
     var songItems : [MPMediaItem]?
-    var selectedSong : MPMediaItem?
+    var selectedSong : Song?
 
     @IBOutlet weak var songTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.songItems = MPMediaQuery.songsQuery().items
-        print(songItems)
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +46,7 @@ class HostAddSongViewController: UIViewController {
             if let cell = sender as? UITableViewCell,
                 indexPath = self.songTableView.indexPathForCell(cell) {
                 print("Adding \(songItems![indexPath.row])")
-                self.selectedSong = songItems![indexPath.row]
+                self.selectedSong = Song(_item: songItems![indexPath.row])
             } else {
                 print("error")
             }

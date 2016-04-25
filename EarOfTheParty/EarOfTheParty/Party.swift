@@ -12,7 +12,7 @@ import MediaPlayer
 class Party {
     var name : String!
     var host : User!
-    var playlist : [MPMediaItem] = []
+    var playlist : [Song] = []
     var partyID : String!   // Unique Party Identifier
     
     // Used for creating new parties and adding to Firebase
@@ -36,4 +36,6 @@ class Party {
             "id": partyID
         ]
     }
+    
+    
 }

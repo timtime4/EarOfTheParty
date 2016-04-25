@@ -31,26 +31,7 @@ class HostViewController: UIViewController {
             }
         }
         
-        ref.queryOrderedByChild("users").observeEventType(.ChildAdded, withBlock: { snapshot in
-            
-            if let data = snapshot.value.objectForKey(self.user!.uid) {
-                let json = JSON(data)
-                
-                print(json)
-                
-                for(_, party) in json["partiesHosting"] {
-                    let name = party["name"].stringValue
-                    let id = party["id"].stringValue
-                    
-                    let newParty = Party(_name: name, _host: self.user!, _partyID: id)
-                    self.user?.parties.append(newParty)
-                }
-            }
-            
-        }, withCancelBlock: { error in
-                print(error.description)
-            
-        })
+        getPartiesHosting()
         
         self.partiesTableView.reloadData()
     }
@@ -146,8 +127,25 @@ class HostViewController: UIViewController {
     }
     
     func getPartiesHosting() -> Void {
-        
-
+        ref.queryOrderedByChild("users").observeEventType(.ChildAdded, withBlock: { snapshot in
+            
+            if let data = snapshot.value.objectForKey(self.user!.uid) {
+                let json = JSON(data)
+                
+                for(_, party) in json["partiesHosting"] {
+                    let name = party["name"].stringValue
+                    let id = party["id"].stringValue
+                    
+                    let newParty = Party(_name: name, _host: self.user!, _partyID: id)
+                    self.user?.parties.append(newParty)
+                }
+                self.partiesTableView.reloadData()
+            }
+            
+            }, withCancelBlock: { error in
+                print(error.description)
+                
+        })
     }
     
 
