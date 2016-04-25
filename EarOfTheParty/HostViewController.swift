@@ -26,7 +26,6 @@ class HostViewController: UIViewController {
             if authData != nil {
                 dispatch_async(dispatch_get_main_queue(), {
                     self.user = User(authData: authData)
-                    
                     self.partiesTableView.reloadData()
                 })
             }
@@ -34,19 +33,21 @@ class HostViewController: UIViewController {
         
         ref.queryOrderedByChild("users").observeEventType(.ChildAdded, withBlock: { snapshot in
             
-            let json = JSON(snapshot.value.objectForKey(self.user!.uid)!)
-            
-            print(json)
-            
-            for(_, party) in json["partiesHosting"] {
-                let name = party["name"].stringValue
-                let id = party["id"].stringValue
+            if let data = snapshot.value.objectForKey(self.user!.uid) {
+                let json = JSON(data)
                 
-                let newParty = Party(_name: name, _host: self.user!, _partyID: id)
-                self.user?.parties.append(newParty)
+                print(json)
+                
+                for(_, party) in json["partiesHosting"] {
+                    let name = party["name"].stringValue
+                    let id = party["id"].stringValue
+                    
+                    let newParty = Party(_name: name, _host: self.user!, _partyID: id)
+                    self.user?.parties.append(newParty)
+                }
             }
             
-            }, withCancelBlock: { error in
+        }, withCancelBlock: { error in
                 print(error.description)
             
         })
@@ -69,7 +70,7 @@ class HostViewController: UIViewController {
         
         let cell = partiesTableView.dequeueReusableCellWithIdentifier("partyCell",forIndexPath: indexPath)
         
-        if self.user != nil {
+        if self.user?.parties.count != 0 {
             cell.textLabel?.text = self.user?.parties[indexPath.row].name
         }
         

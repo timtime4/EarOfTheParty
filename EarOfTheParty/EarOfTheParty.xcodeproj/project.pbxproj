@@ -18,6 +18,7 @@
 		5E4B63C11CBC13320071926A /* EarOfTheParty.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E4B63BF1CBC13320071926A /* EarOfTheParty.xcdatamodeld */; };
 		5E4B63C31CBC13320071926A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E4B63C21CBC13320071926A /* Assets.xcassets */; };
 		5E4B63C61CBC13320071926A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E4B63C41CBC13320071926A /* LaunchScreen.storyboard */; };
+		5E5DBCCC1CCE6CA1004116AB /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5DBCCB1CCE6CA1004116AB /* SongTableViewCell.swift */; };
 		76DDD1109CE8CF5E40745C81 /* Pods_EarOfTheParty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 296F197ACD8A9A57E5E611BA /* Pods_EarOfTheParty.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		5E4B63C21CBC13320071926A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E4B63C51CBC13320071926A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E4B63C71CBC13320071926A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E5DBCCB1CCE6CA1004116AB /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		647A6D18F0408690A04E1F8F /* Pods-EarOfTheParty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarOfTheParty.release.xcconfig"; path = "Pods/Target Support Files/Pods-EarOfTheParty/Pods-EarOfTheParty.release.xcconfig"; sourceTree = "<group>"; };
 		A6532692BA5F9932D4DE5D07 /* Pods-EarOfTheParty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarOfTheParty.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EarOfTheParty/Pods-EarOfTheParty.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				5E4B63BC1CBC13320071926A /* Main.storyboard */,
+				5E5DBCCB1CCE6CA1004116AB /* SongTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				5E4B63C11CBC13320071926A /* EarOfTheParty.xcdatamodeld in Sources */,
 				5E2D451B1CBC443100D22241 /* User.swift in Sources */,
 				5E2D451D1CBEDB8400D22241 /* Party.swift in Sources */,
+				5E5DBCCC1CCE6CA1004116AB /* SongTableViewCell.swift in Sources */,
 				5E4B63B91CBC13320071926A /* AppDelegate.swift in Sources */,
 				5E2D45211CBEE0A400D22241 /* HostAddSongViewController.swift in Sources */,
 			);

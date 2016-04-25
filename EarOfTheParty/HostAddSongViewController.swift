@@ -35,6 +35,7 @@ class HostAddSongViewController: UIViewController {
         
         if  songItems?.count != 0 {
             cell.textLabel?.text = songItems![indexPath.row].title as String!
+            
         }
         
         return cell

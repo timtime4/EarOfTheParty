@@ -28,10 +28,12 @@ class PartyViewController: UIViewController {
     
     func tableView(songTableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = songTableView.dequeueReusableCellWithIdentifier("songCell",forIndexPath: indexPath)
+        let cell = songTableView.dequeueReusableCellWithIdentifier("songCell",forIndexPath: indexPath) as! SongTableViewCell
         
         if  party?.playlist.count != 0 {
-            cell.textLabel?.text = party?.playlist[indexPath.row].title
+            cell.songTitleLabel?.text = party?.playlist[indexPath.row].title
+            cell.albumTitleLabel?.text = party?.playlist[indexPath.row].albumTitle
+            cell.artistLabel?.text = party?.playlist[indexPath.row].artist
         }
         
         return cell
