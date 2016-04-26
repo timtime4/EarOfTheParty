@@ -84,7 +84,9 @@ class HostViewController: UIViewController {
             
             // Create Party on Firebase DB
             let partyRef = self.ref.childByAppendingPath("users/\(self.user!.uid)/partiesHosting/\(self.newParty!.partyID)")
+            let partyIndex = self.ref.childByAppendingPath("parties/\(self.newParty!.partyID)")
             partyRef.setValue(self.newParty!.toAnyObject())
+            partyIndex.setValue(self.newParty!.toPartyIndexObject())
             
             self.performSegueWithIdentifier("partiesToPartyInfo", sender: nil)
 
@@ -114,13 +116,14 @@ class HostViewController: UIViewController {
                 cell = sender as? UITableViewCell,
                 indexPath = self.partiesTableView.indexPathForCell(cell) {
                     partyInfoVC.party = self.user?.parties[indexPath.row]
-            }
+            } else {
             
-            // Executes if sent by tapping "New Party" button
-            if let partyInfoVC = segue.destinationViewController as? PartyViewController {
-                print("From 'new party' button")
-                if self.newParty != nil {
-                    partyInfoVC.party = self.newParty
+                // Executes if sent by tapping "New Party" button
+                if let partyInfoVC = segue.destinationViewController as? PartyViewController {
+                    print("From 'new party' button")
+                    if self.newParty != nil {
+                        partyInfoVC.party = self.newParty
+                    }
                 }
             }
         }
@@ -128,6 +131,7 @@ class HostViewController: UIViewController {
     
     func getPartiesHosting() -> Void {
         ref.queryOrderedByChild("users").observeEventType(.ChildAdded, withBlock: { snapshot in
+            print("getPartiesHosting()")
             
             if let data = snapshot.value.objectForKey(self.user!.uid) {
                 let json = JSON(data)

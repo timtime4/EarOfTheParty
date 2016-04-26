@@ -14,6 +14,8 @@ class Party {
     var host : User!
     var playlist : [Song] = []
     var partyID : String!   // Unique Party Identifier
+    var didInitialFBQuery = false   // Used to prevent unnecessary FB queries
+
     
     // Used for creating new parties and adding to Firebase
     init(_name : String, _host : User){
@@ -34,6 +36,15 @@ class Party {
             "name": name,
             "hostedByUser": host!.email,
             "id": partyID
+        ]
+    }
+    
+    func toPartyIndexObject() -> AnyObject {
+        return [
+            "name": name,
+            "hostedByUser": host!.email,
+            "partyID": partyID,
+            "hostID": host!.uid
         ]
     }
     

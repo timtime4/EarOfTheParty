@@ -42,10 +42,8 @@ class HostAddSongViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "unwindToPartyView" {
-            print("Unwinding to Party View, cell selected")
             if let cell = sender as? UITableViewCell,
                 indexPath = self.songTableView.indexPathForCell(cell) {
-                print("Adding \(songItems![indexPath.row])")
                 self.selectedSong = Song(_item: songItems![indexPath.row])
             } else {
                 print("error")

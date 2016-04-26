@@ -21,7 +21,7 @@ class PartyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationBar.title = self.party?.name
-        getPlaylist()
+        if self.party?.didInitialFBQuery == false { getPlaylist() }
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,11 +69,11 @@ class PartyViewController: UIViewController {
     
     // Grab playlist from Firebase
     func getPlaylist() -> Void {
-        print("In getPlaylist()")
         let path = "https://scorching-torch-7974.firebaseio.com/users/\(self.party!.host.uid)"
         let partiesRef = Firebase(url: path)
         
         partiesRef.queryOrderedByChild("partiesHosting").observeEventType(.ChildAdded, withBlock: { snapshot in
+            print("getPlaylist()")
             
             if let data = snapshot.value.objectForKey(self.party!.partyID) {
                 let json = JSON(data)
@@ -82,6 +82,7 @@ class PartyViewController: UIViewController {
                     let newSong = Song(_songID: song["id"].stringValue)
                     self.party?.playlist.append(newSong)
                 }
+                self.party?.didInitialFBQuery = true
                 self.songTableView.reloadData()
             }
             
