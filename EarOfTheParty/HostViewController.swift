@@ -21,18 +21,14 @@ class HostViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        ref.observeAuthEventWithBlock { authData in
-            if authData != nil {
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.user = User(authData: authData)
-                    self.partiesTableView.reloadData()
-                })
-            }
-        }
-        
-        getPartiesHosting()
-        
+        var tbvc = self.tabBarController  as! EOTPTabBarController
+        dispatch_async(dispatch_get_main_queue(), {
+            // Keep reassigning tbvc until user has been authenticated
+            while tbvc.complete == false { tbvc = self.tabBarController  as! EOTPTabBarController }
+            self.user = tbvc.user
+            self.getPartiesHosting()
+        })
+
         self.partiesTableView.reloadData()
     }
 
@@ -51,8 +47,8 @@ class HostViewController: UIViewController {
         
         let cell = partiesTableView.dequeueReusableCellWithIdentifier("partyCell",forIndexPath: indexPath)
         
-        if self.user?.parties.count != 0 {
-            cell.textLabel?.text = self.user?.parties[indexPath.row].name
+        if self.user?.partiesHosting.count != 0 {
+            cell.textLabel?.text = self.user?.partiesHosting[indexPath.row].name
         }
         
         return cell
@@ -62,7 +58,7 @@ class HostViewController: UIViewController {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if self.user != nil {
-            return (self.user?.parties.count)!
+            return (self.user?.partiesHosting.count)!
         } else {
             return 0
         }
@@ -80,7 +76,7 @@ class HostViewController: UIViewController {
                                         
             let textField = alert.textFields![0]
             self.newParty = Party(_name: textField.text!, _host: self.user!)
-            self.user?.parties.append(self.newParty!)
+            self.user?.partiesHosting.append(self.newParty!)
             
             // Create Party on Firebase DB
             let partyRef = self.ref.childByAppendingPath("users/\(self.user!.uid)/partiesHosting/\(self.newParty!.partyID)")
@@ -115,7 +111,7 @@ class HostViewController: UIViewController {
             if let partyInfoVC = segue.destinationViewController as? PartyViewController,
                 cell = sender as? UITableViewCell,
                 indexPath = self.partiesTableView.indexPathForCell(cell) {
-                    partyInfoVC.party = self.user?.parties[indexPath.row]
+                    partyInfoVC.party = self.user?.partiesHosting[indexPath.row]
             } else {
             
                 // Executes if sent by tapping "New Party" button
@@ -132,24 +128,27 @@ class HostViewController: UIViewController {
     func getPartiesHosting() -> Void {
         ref.queryOrderedByChild("users").observeEventType(.ChildAdded, withBlock: { snapshot in
             print("getPartiesHosting()")
-            
-            if let data = snapshot.value.objectForKey(self.user!.uid) {
-                let json = JSON(data)
-                
-                for(_, party) in json["partiesHosting"] {
-                    let name = party["name"].stringValue
-                    let id = party["id"].stringValue
+            if self.user != nil {
+                if let data = snapshot.value.objectForKey(self.user!.uid) {
+                    let json = JSON(data)
                     
-                    let newParty = Party(_name: name, _host: self.user!, _partyID: id)
-                    self.user?.parties.append(newParty)
+                    for(_, party) in json["partiesHosting"] {
+                        let name = party["name"].stringValue
+                        let id = party["id"].stringValue
+                        
+                        let newParty = Party(_name: name, _host: self.user!, _partyID: id)
+                        self.user?.partiesHosting.append(newParty)
+                    }
+                    self.partiesTableView.reloadData()
                 }
-                self.partiesTableView.reloadData()
+            } else {
+                print("user not assigned yet")
             }
             
             }, withCancelBlock: { error in
                 print(error.description)
-                
         })
+        
     }
     
 

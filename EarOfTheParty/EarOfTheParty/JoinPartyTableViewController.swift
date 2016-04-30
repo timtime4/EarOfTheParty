@@ -14,6 +14,8 @@ class JoinPartyTableViewController: UITableViewController {
     
     var searchCritia : String?
     var matchParties : [Dictionary<String, String>] = []
+    var selectedParty : Dictionary<String, String>?
+
     let ref = Firebase(url: "https://scorching-torch-7974.firebaseio.com/")
 
     override func viewDidLoad() {
@@ -79,6 +81,17 @@ class JoinPartyTableViewController: UITableViewController {
                 print(error.description)
                 
         })
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "unwindToSearchParty" {
+            if let cell = sender as? UITableViewCell,
+                indexPath = self.tableView.indexPathForCell(cell) {
+                self.selectedParty = self.matchParties[indexPath.row]
+            } else {
+                print("error")
+            }
+        }
     }
 
     

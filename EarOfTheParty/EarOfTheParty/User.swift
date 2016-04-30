@@ -12,7 +12,8 @@ import Firebase
 class User {
     let uid: String!
     let email: String!
-    var parties : [Party] = []
+    var partiesHosting : [Party] = []
+    var partiesAttending : [Dictionary<String,String>] = []
     
     // Initialize from Firebase
     init(authData: FAuthData) {

@@ -1,5 +1,5 @@
 //
-//  JoinPartyViewController.swift
+//  SearchPartyViewController.swift
 //  EarOfTheParty
 //
 //  Created by Tim Pusateri on 4/25/16.
@@ -32,6 +32,8 @@ class SearchPartyViewController: UIViewController {
             
         }
     }
+    
+
     
     
 
