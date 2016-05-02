@@ -13,8 +13,8 @@ import SwiftyJSON
 class JoinPartyTableViewController: UITableViewController {
     
     var searchCritia : String?
-    var matchParties : [Dictionary<String, String>] = []
-    var selectedParty : Dictionary<String, String>?
+    var matchParties : [PartyMetaData] = []
+    var selectedParty : PartyMetaData?
 
     let ref = Firebase(url: "https://scorching-torch-7974.firebaseio.com/")
 
@@ -40,9 +40,8 @@ class JoinPartyTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("matchedPartyCell",forIndexPath: indexPath)
         
         if !self.matchParties.isEmpty {
-            let tempDict = self.matchParties[indexPath.row]
-            cell.textLabel!.text = tempDict["name"]
-            cell.detailTextLabel!.text = "Hosted By: \(tempDict["hostEmail"]!)"
+            cell.textLabel!.text = self.matchParties[indexPath.row].name
+            cell.detailTextLabel!.text = "Hosted By: \(self.matchParties[indexPath.row].hostEmail!)"
         }
         
         return cell
@@ -64,13 +63,13 @@ class JoinPartyTableViewController: UITableViewController {
                 for(_, party) in json {
                     if party["name"].stringValue == self.searchCritia /* &&
                         party["hostID"] != self.user.uid */ {
-                        let tempDict = [
-                            "name" : party["name"].stringValue,
-                            "hostID" : party["hostID"].stringValue,
-                            "partyID" : party["partyID"].stringValue,
-                            "hostEmail" : party["hostedByUser"].stringValue
-                        ]
-                        self.matchParties.append(tempDict)
+                        let newParty = PartyMetaData(
+                            _name : party["name"].stringValue,
+                            _partyID : party["hostID"].stringValue,
+                            _hostID : party["partyID"].stringValue,
+                            _hostEmail : party["hostedByUser"].stringValue
+                        )
+                        self.matchParties.append(newParty)
                     }
     
                 }

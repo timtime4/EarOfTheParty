@@ -52,7 +52,6 @@ class HostAddSongViewController: UIViewController {
     }
     
     
-
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if self.songItems!.count != 0 {

@@ -18,13 +18,16 @@
 		5E4B63C11CBC13320071926A /* EarOfTheParty.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E4B63BF1CBC13320071926A /* EarOfTheParty.xcdatamodeld */; };
 		5E4B63C31CBC13320071926A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E4B63C21CBC13320071926A /* Assets.xcassets */; };
 		5E4B63C61CBC13320071926A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E4B63C41CBC13320071926A /* LaunchScreen.storyboard */; };
-		5E5DBCCC1CCE6CA1004116AB /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5DBCCB1CCE6CA1004116AB /* SongTableViewCell.swift */; };
 		5E5DBCCE1CCE8541004116AB /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5DBCCD1CCE8541004116AB /* Song.swift */; };
 		5E7ADF171CCEBE9E00B27343 /* AttendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7ADF161CCEBE9E00B27343 /* AttendingViewController.swift */; };
 		5E7ADF191CCEBF8700B27343 /* SearchPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7ADF181CCEBF8700B27343 /* SearchPartyViewController.swift */; };
 		5E7ADF1B1CCEC21A00B27343 /* JoinPartyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7ADF1A1CCEC21A00B27343 /* JoinPartyTableViewController.swift */; };
 		5EEE63E11CD0094E00D7D6AC /* EOTPTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEE63E01CD0094E00D7D6AC /* EOTPTabBarController.swift */; };
 		5EEE63E31CD1737E00D7D6AC /* AttendingPlaylistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEE63E21CD1737E00D7D6AC /* AttendingPlaylistTableViewController.swift */; };
+		5EEE63E51CD7A35B00D7D6AC /* SongMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEE63E41CD7A35B00D7D6AC /* SongMetaData.swift */; };
+		5EEE63E71CD7A86000D7D6AC /* PartyMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEE63E61CD7A86000D7D6AC /* PartyMetaData.swift */; };
+		5EEE63EA1CD7AF9100D7D6AC /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEE63E81CD7AF9100D7D6AC /* SongTableViewCell.swift */; };
+		5EEE63EB1CD7AF9100D7D6AC /* SongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EEE63E91CD7AF9100D7D6AC /* SongTableViewCell.xib */; };
 		76DDD1109CE8CF5E40745C81 /* Pods_EarOfTheParty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 296F197ACD8A9A57E5E611BA /* Pods_EarOfTheParty.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,13 +46,16 @@
 		5E4B63C21CBC13320071926A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E4B63C51CBC13320071926A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E4B63C71CBC13320071926A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5E5DBCCB1CCE6CA1004116AB /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		5E5DBCCD1CCE8541004116AB /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Song.swift; path = ../Song.swift; sourceTree = "<group>"; };
 		5E7ADF161CCEBE9E00B27343 /* AttendingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendingViewController.swift; sourceTree = "<group>"; };
 		5E7ADF181CCEBF8700B27343 /* SearchPartyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPartyViewController.swift; sourceTree = "<group>"; };
 		5E7ADF1A1CCEC21A00B27343 /* JoinPartyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinPartyTableViewController.swift; sourceTree = "<group>"; };
 		5EEE63E01CD0094E00D7D6AC /* EOTPTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EOTPTabBarController.swift; sourceTree = "<group>"; };
 		5EEE63E21CD1737E00D7D6AC /* AttendingPlaylistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendingPlaylistTableViewController.swift; sourceTree = "<group>"; };
+		5EEE63E41CD7A35B00D7D6AC /* SongMetaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongMetaData.swift; sourceTree = "<group>"; };
+		5EEE63E61CD7A86000D7D6AC /* PartyMetaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyMetaData.swift; sourceTree = "<group>"; };
+		5EEE63E81CD7AF9100D7D6AC /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		5EEE63E91CD7AF9100D7D6AC /* SongTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongTableViewCell.xib; sourceTree = "<group>"; };
 		647A6D18F0408690A04E1F8F /* Pods-EarOfTheParty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarOfTheParty.release.xcconfig"; path = "Pods/Target Support Files/Pods-EarOfTheParty/Pods-EarOfTheParty.release.xcconfig"; sourceTree = "<group>"; };
 		A6532692BA5F9932D4DE5D07 /* Pods-EarOfTheParty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarOfTheParty.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EarOfTheParty/Pods-EarOfTheParty.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,8 +76,9 @@
 			isa = PBXGroup;
 			children = (
 				5E4B63BC1CBC13320071926A /* Main.storyboard */,
-				5E5DBCCB1CCE6CA1004116AB /* SongTableViewCell.swift */,
 				5EEE63E01CD0094E00D7D6AC /* EOTPTabBarController.swift */,
+				5EEE63E81CD7AF9100D7D6AC /* SongTableViewCell.swift */,
+				5EEE63E91CD7AF9100D7D6AC /* SongTableViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -82,6 +89,8 @@
 				5E5DBCCD1CCE8541004116AB /* Song.swift */,
 				5E2D451A1CBC443100D22241 /* User.swift */,
 				5E2D451C1CBEDB8400D22241 /* Party.swift */,
+				5EEE63E41CD7A35B00D7D6AC /* SongMetaData.swift */,
+				5EEE63E61CD7A86000D7D6AC /* PartyMetaData.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -220,6 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EEE63EB1CD7AF9100D7D6AC /* SongTableViewCell.xib in Resources */,
 				5E4B63C61CBC13320071926A /* LaunchScreen.storyboard in Resources */,
 				5E4B63C31CBC13320071926A /* Assets.xcassets in Resources */,
 				5E4B63BE1CBC13320071926A /* Main.storyboard in Resources */,
@@ -282,16 +292,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E2D451F1CBEE07700D22241 /* PartyViewController.swift in Sources */,
+				5EEE63E71CD7A86000D7D6AC /* PartyMetaData.swift in Sources */,
 				5E2D45191CBC436000D22241 /* HostViewController.swift in Sources */,
 				5E2D45131CBC1CA800D22241 /* LoginInViewController.swift in Sources */,
 				5E4B63C11CBC13320071926A /* EarOfTheParty.xcdatamodeld in Sources */,
 				5E5DBCCE1CCE8541004116AB /* Song.swift in Sources */,
+				5EEE63E51CD7A35B00D7D6AC /* SongMetaData.swift in Sources */,
 				5E2D451B1CBC443100D22241 /* User.swift in Sources */,
 				5E7ADF171CCEBE9E00B27343 /* AttendingViewController.swift in Sources */,
 				5E7ADF1B1CCEC21A00B27343 /* JoinPartyTableViewController.swift in Sources */,
 				5E2D451D1CBEDB8400D22241 /* Party.swift in Sources */,
-				5E5DBCCC1CCE6CA1004116AB /* SongTableViewCell.swift in Sources */,
 				5E4B63B91CBC13320071926A /* AppDelegate.swift in Sources */,
+				5EEE63EA1CD7AF9100D7D6AC /* SongTableViewCell.swift in Sources */,
 				5E2D45211CBEE0A400D22241 /* HostAddSongViewController.swift in Sources */,
 				5E7ADF191CCEBF8700B27343 /* SearchPartyViewController.swift in Sources */,
 				5EEE63E11CD0094E00D7D6AC /* EOTPTabBarController.swift in Sources */,

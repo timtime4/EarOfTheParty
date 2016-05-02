@@ -13,7 +13,7 @@ class User {
     let uid: String!
     let email: String!
     var partiesHosting : [Party] = []
-    var partiesAttending : [Dictionary<String,String>] = []
+    var partiesAttending : [PartyMetaData] = []
     
     // Initialize from Firebase
     init(authData: FAuthData) {

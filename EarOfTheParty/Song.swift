@@ -15,7 +15,7 @@ class Song {
     var rank : Int = 1
     var songID : UInt64!   // Unique Song Identifier
     
-    // Used for creating new parties and adding to Firebase
+    // Used for adding new songs to Firebase
     init(_item : MPMediaItem){
         item = _item
         songTitle = _item.title

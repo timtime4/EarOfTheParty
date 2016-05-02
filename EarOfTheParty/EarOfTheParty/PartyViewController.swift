@@ -21,6 +21,8 @@ class PartyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationBar.title = self.party?.name
+        self.songTableView.registerNib(UINib(nibName: "SongTableViewCell", bundle: nil), forCellReuseIdentifier: "songCell")
+
         if self.party?.didInitialFBQuery == false { getPlaylist() }
     }
 
@@ -36,7 +38,7 @@ class PartyViewController: UIViewController {
         
         if  party?.playlist.count != 0 {
             cell.songTitleLabel?.text = party?.playlist[indexPath.row].item.title
-            cell.albumTitleLabel?.text = party?.playlist[indexPath.row].item.albumTitle
+            cell.albumLabel?.text = party?.playlist[indexPath.row].item.albumTitle
             cell.artistLabel?.text = party?.playlist[indexPath.row].item.artist
         }
         

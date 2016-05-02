@@ -37,7 +37,7 @@ class AttendingViewController: UIViewController {
         let cell = partiesTableView.dequeueReusableCellWithIdentifier("partyAttendingCell",forIndexPath: indexPath)
         
         if self.user?.partiesAttending.count != 0 {
-            cell.textLabel?.text = self.user?.partiesAttending[indexPath.row]["name"]
+            cell.textLabel?.text = self.user?.partiesAttending[indexPath.row].name
         }
         
         return cell
@@ -60,13 +60,25 @@ class AttendingViewController: UIViewController {
             self.user?.partiesAttending.append(selectedPartyMetaData)
             
             // Add party to party Firebase DB
-            let path = "users/\(self.user!.uid)/partiesAttending/\(selectedPartyMetaData["partyID"]!)"
+            let path = "users/\(self.user!.uid)/partiesAttending/\(selectedPartyMetaData.partyID!)"
             let partyRef = self.ref.childByAppendingPath(path)
             partyRef.setValue(selectedPartyMetaData)
              
             self.partiesAttendingTableView.reloadData()
         }
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toAttendingPlaylist" {
+            
+            // Executes if sent by selecting existing party
+            if let partyInfoVC = segue.destinationViewController as? AttendingPlaylistTableViewController,
+                cell = sender as? UITableViewCell,
+                indexPath = self.partiesAttendingTableView.indexPathForCell(cell) {
+                partyInfoVC.party = self.user?.partiesAttending[indexPath.row]
+            }
+        }
     }
     
     func getPartiesAttending() -> Void {
@@ -77,12 +89,12 @@ class AttendingViewController: UIViewController {
                     let json = JSON(data)
                     
                     for(_, party) in json["partiesAttending"] {
-                        let partyMetaData = [
-                            "name" : party["name"].stringValue,
-                            "hostID" : party["hostID"].stringValue,
-                            "partyID" : party["partyID"].stringValue,
-                            "hostEmail" : party["hostEmail"].stringValue
-                        ]
+                        let partyMetaData = PartyMetaData(
+                            _name : party["name"].stringValue,
+                            _partyID : party["partyID"].stringValue,
+                            _hostID : party["hostID"].stringValue,
+                            _hostEmail : party["hostEmail"].stringValue
+                        )
                         self.user?.partiesAttending.append(partyMetaData)
                     }
                     self.partiesAttendingTableView.reloadData()

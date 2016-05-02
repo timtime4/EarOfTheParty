@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="KGk-i7-Jjw" customClass="SongTableViewCell" customModule="EarOfTheParty" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="560" height="72"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="560" height="71.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Title Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHC-5l-R8v">
+                        <rect key="frame" x="8" y="8" width="233" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="233" id="in9-oI-CDE"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Hh-TA-vKg">
+                        <rect key="frame" x="8" y="28" width="233" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="233" id="11P-Yc-UXY"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ttl-0H-MOr">
+                        <rect key="frame" x="8" y="45" width="233" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="233" id="R2h-gQ-CMh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMk-PQ-4Al" userLabel="Delete Button">
+                        <rect key="frame" x="528" y="24" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="24" id="Tyh-PI-mNU"/>
+                            <constraint firstAttribute="height" constant="24" id="cgG-6l-Txw"/>
+                        </constraints>
+                        <state key="normal" title="Button" image="Delete-50"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYR-Gh-KlQ" userLabel="DownVote Button">
+                        <rect key="frame" x="502" y="24" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="Pmq-zD-Sn8"/>
+                            <constraint firstAttribute="width" constant="24" id="aoO-Pu-ZIM"/>
+                        </constraints>
+                        <state key="normal" title="Button" image="Down Filled-50"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CnE-AF-cA1" userLabel="UpVote Button">
+                        <rect key="frame" x="477" y="24" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="U2h-dL-CWd"/>
+                            <constraint firstAttribute="width" constant="24" id="wcp-Ll-jCq"/>
+                        </constraints>
+                        <state key="normal" title="Button" image="Up Filled-50"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYt-LF-sAD" userLabel="Rank Label">
+                        <rect key="frame" x="440" y="25" width="28.5" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ZYt-LF-sAD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6A6-rH-hcT"/>
+                    <constraint firstItem="CnE-AF-cA1" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6fc-S7-fkd"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="DHC-5l-R8v" secondAttribute="leading" id="9yr-rU-BTD"/>
+                    <constraint firstItem="TMk-PQ-4Al" firstAttribute="leading" secondItem="UYR-Gh-KlQ" secondAttribute="trailing" constant="2" id="BIP-WC-mLP"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="Ttl-0H-MOr" secondAttribute="leading" id="JVL-4P-h4n"/>
+                    <constraint firstItem="CnE-AF-cA1" firstAttribute="leading" secondItem="ZYt-LF-sAD" secondAttribute="trailing" constant="8.5" id="PKC-u7-o7m"/>
+                    <constraint firstItem="TMk-PQ-4Al" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="RNv-kd-4Kt"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="TMk-PQ-4Al" secondAttribute="trailing" id="X1u-lW-1SA"/>
+                    <constraint firstAttribute="topMargin" secondItem="DHC-5l-R8v" secondAttribute="top" id="o0y-dj-D2G"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="4Hh-TA-vKg" secondAttribute="leading" id="oZv-bn-mRN"/>
+                    <constraint firstItem="UYR-Gh-KlQ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="p3U-y6-b27"/>
+                    <constraint firstItem="UYR-Gh-KlQ" firstAttribute="leading" secondItem="CnE-AF-cA1" secondAttribute="trailing" constant="1" id="sgK-FH-Li1"/>
+                    <constraint firstItem="Ttl-0H-MOr" firstAttribute="top" secondItem="4Hh-TA-vKg" secondAttribute="bottom" constant="1" id="vKg-s8-2Vo"/>
+                    <constraint firstItem="4Hh-TA-vKg" firstAttribute="top" secondItem="DHC-5l-R8v" secondAttribute="bottom" constant="-1" id="ykQ-JV-i9b"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="albumLabel" destination="4Hh-TA-vKg" id="aQw-Z9-ROB"/>
+                <outlet property="artistLabel" destination="Ttl-0H-MOr" id="ZuM-E7-9y2"/>
+                <outlet property="deleteButton" destination="TMk-PQ-4Al" id="4H2-4I-WeT"/>
+                <outlet property="downVoteButton" destination="UYR-Gh-KlQ" id="S0i-4N-jy3"/>
+                <outlet property="rankLabel" destination="ZYt-LF-sAD" id="OKj-2h-E5K"/>
+                <outlet property="songTitleLabel" destination="DHC-5l-R8v" id="gVO-oH-ZFd"/>
+                <outlet property="upVoteButton" destination="CnE-AF-cA1" id="pYu-dY-uno"/>
+            </connections>
+            <point key="canvasLocation" x="407" y="365"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Delete-50" width="50" height="50"/>
+        <image name="Down Filled-50" width="50" height="50"/>
+        <image name="Up Filled-50" width="50" height="50"/>
+    </resources>
+</document>
