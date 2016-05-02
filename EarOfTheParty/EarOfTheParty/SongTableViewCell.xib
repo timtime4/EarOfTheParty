@@ -43,7 +43,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMk-PQ-4Al" userLabel="Delete Button">
-                        <rect key="frame" x="528" y="24" width="24" height="24"/>
+                        <rect key="frame" x="528" y="24" width="24" height="23.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="24" id="Tyh-PI-mNU"/>
                             <constraint firstAttribute="height" constant="24" id="cgG-6l-Txw"/>

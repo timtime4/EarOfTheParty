@@ -30,6 +30,15 @@ class PartyViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("hostDownVote:"), name: "downVoteButtonPress", object: nil)
+    }
+    
+    
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "downVoteButtonPress", object: nil)
+    }
 
     
     func tableView(songTableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -67,6 +76,10 @@ class PartyViewController: UIViewController {
             
             self.songTableView.reloadData()
         }
+    }
+    
+    func hostDownVote(data:NSNotification) -> Void {
+        print("Host down vote pressed")
     }
     
     // Grab playlist from Firebase

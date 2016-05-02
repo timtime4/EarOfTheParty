@@ -11,9 +11,29 @@ import Foundation
 class SongMetaData {
     var songTitle : String!
     var rank : Int = 1
+    var songID : String!
     
-    init(_title : String, _rank : String){
+    init(_title : String, _rank : String, _songID : String){
         songTitle = _title
         rank = Int(_rank)!
+        songID = _songID
+    }
+    
+    func upVoteDict() -> AnyObject {
+        rank = rank + 1
+        return [
+            "id": songID,
+            "rank": String(rank),
+            "songTitle": songTitle
+        ]
+    }
+    
+    func downVoteDict() -> AnyObject {
+        rank = rank - 1
+        return [
+            "id": songID,
+            "rank": String(rank),
+            "songTitle": songTitle
+        ]
     }
 }

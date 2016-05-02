@@ -9,6 +9,7 @@
 import UIKit
 
 class SongTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var albumLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var upVoteButton: UIButton!
@@ -17,6 +18,7 @@ class SongTableViewCell: UITableViewCell {
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var ablumLabel: UILabel!
     @IBOutlet weak var songTitleLabel: UILabel!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
