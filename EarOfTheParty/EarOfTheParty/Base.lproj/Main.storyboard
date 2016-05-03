@@ -326,10 +326,10 @@
             </objects>
             <point key="canvasLocation" x="2788" y="-253"/>
         </scene>
-        <!--Party 1-->
+        <!--Title-->
         <scene sceneID="5Dh-9K-oac">
             <objects>
-                <viewController title="Party 1" id="HP1-uj-yDx" customClass="PartyViewController" customModule="EarOfTheParty" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HP1-uj-yDx" customClass="PartyViewController" customModule="EarOfTheParty" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Qa-si-Yfr"/>
                         <viewControllerLayoutGuide type="bottom" id="EOw-Wj-cK8"/>
@@ -349,6 +349,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="71.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="hmm-Xb-Ze3" kind="show" identifier="toHostSongPlaying" id="H5h-0a-job"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -383,6 +386,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ig-h0-quu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3489" y="-253"/>
+        </scene>
+        <!--Host Song Playing View Controller-->
+        <scene sceneID="X0s-8d-gVg">
+            <objects>
+                <viewController id="hmm-Xb-Ze3" customClass="HostSongPlayingViewController" customModule="EarOfTheParty" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pqd-u8-DKL"/>
+                        <viewControllerLayoutGuide type="bottom" id="4BH-xr-IGN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Zs-J1-6E5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Afh-Gs-3j3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4318" y="-62"/>
         </scene>
         <!--Host Add Song View Controller-->
         <scene sceneID="7nP-kS-TOc">
@@ -433,7 +454,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcl-lA-E59" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="qgg-ja-0XD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4289" y="-253"/>
+            <point key="canvasLocation" x="4249" y="-933"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Jjd-E0-N75">

@@ -59,6 +59,11 @@ class PartyViewController: UIViewController {
         }
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("cell selected")
+        self.performSegueWithIdentifier("toHostSongPlaying", sender: nil)
+    }
+    
     // Unwind Action after Selecting song in HostAddSongController
     @IBAction func addNewSong(segue: UIStoryboardSegue){
         if let addNewSongVC = segue.sourceViewController as? HostAddSongViewController {
@@ -103,19 +108,26 @@ class PartyViewController: UIViewController {
 
     
     func addObservers(song : Song){
-        // Get a reference to our posts
+        // Get a reference to each song
         let path = "users/\(self.party!.host!.uid)/partiesHosting/\(self.party!.partyID)/songs/\(song.songID)"
-        
-        print(path)
         let playlistRef = self.ref.childByAppendingPath(path)
+        
         // Get the data on a post that has changed
         playlistRef.observeEventType(.ChildChanged, withBlock: { snapshot in
             let newRank = snapshot.value as? String
             song.rank = Int(newRank!)!
-            self.party?.playlist.sortInPlace({ $0.rank > $1.rank }) // sort by rank
+            self.party?.playlist.sortInPlace({ $0.rank > $1.rank }) // sort playlist by song rank
             self.songTableView.reloadData()
         })
-        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toHostSongPlaying" {
+            if let songPlayingVC = segue.destinationViewController as? HostSongPlayingViewController {
+                songPlayingVC.party = self.party
+            }
+            
+        }
     }
 
 }

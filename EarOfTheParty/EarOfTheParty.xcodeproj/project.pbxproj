@@ -13,6 +13,7 @@
 		5E2D451D1CBEDB8400D22241 /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D451C1CBEDB8400D22241 /* Party.swift */; };
 		5E2D451F1CBEE07700D22241 /* PartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D451E1CBEE07700D22241 /* PartyViewController.swift */; };
 		5E2D45211CBEE0A400D22241 /* HostAddSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2D45201CBEE0A400D22241 /* HostAddSongViewController.swift */; };
+		5E3947BD1CD8463C00FB27CD /* HostSongPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3947BC1CD8463C00FB27CD /* HostSongPlayingViewController.swift */; };
 		5E4B63B91CBC13320071926A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4B63B81CBC13320071926A /* AppDelegate.swift */; };
 		5E4B63BE1CBC13320071926A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E4B63BC1CBC13320071926A /* Main.storyboard */; };
 		5E4B63C11CBC13320071926A /* EarOfTheParty.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E4B63BF1CBC13320071926A /* EarOfTheParty.xcdatamodeld */; };
@@ -39,6 +40,7 @@
 		5E2D451C1CBEDB8400D22241 /* Party.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Party.swift; sourceTree = "<group>"; };
 		5E2D451E1CBEE07700D22241 /* PartyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyViewController.swift; sourceTree = "<group>"; };
 		5E2D45201CBEE0A400D22241 /* HostAddSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HostAddSongViewController.swift; path = ../HostAddSongViewController.swift; sourceTree = "<group>"; };
+		5E3947BC1CD8463C00FB27CD /* HostSongPlayingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostSongPlayingViewController.swift; sourceTree = "<group>"; };
 		5E4B63B51CBC13320071926A /* EarOfTheParty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarOfTheParty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E4B63B81CBC13320071926A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E4B63BD1CBC13320071926A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				5E2D45181CBC436000D22241 /* HostViewController.swift */,
 				5E2D451E1CBEE07700D22241 /* PartyViewController.swift */,
 				5E2D45201CBEE0A400D22241 /* HostAddSongViewController.swift */,
+				5E3947BC1CD8463C00FB27CD /* HostSongPlayingViewController.swift */,
 				5E7ADF161CCEBE9E00B27343 /* AttendingViewController.swift */,
 				5E7ADF181CCEBF8700B27343 /* SearchPartyViewController.swift */,
 				5E7ADF1A1CCEC21A00B27343 /* JoinPartyTableViewController.swift */,
@@ -306,6 +309,7 @@
 				5E2D451B1CBC443100D22241 /* User.swift in Sources */,
 				5E7ADF171CCEBE9E00B27343 /* AttendingViewController.swift in Sources */,
 				5E7ADF1B1CCEC21A00B27343 /* JoinPartyTableViewController.swift in Sources */,
+				5E3947BD1CD8463C00FB27CD /* HostSongPlayingViewController.swift in Sources */,
 				5E2D451D1CBEDB8400D22241 /* Party.swift in Sources */,
 				5E4B63B91CBC13320071926A /* AppDelegate.swift in Sources */,
 				5EEE63EA1CD7AF9100D7D6AC /* SongTableViewCell.swift in Sources */,
