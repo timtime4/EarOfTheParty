@@ -48,5 +48,7 @@ class Party {
         ]
     }
     
+
+    
     
 }

@@ -9,11 +9,15 @@
 import UIKit
 import Firebase
 import SwiftyJSON
+import MediaPlayer
 
 class PartyViewController: UIViewController {
     
     var party : Party?
     let ref = Firebase(url: "https://scorching-torch-7974.firebaseio.com/")
+    var currentPlaylist : [Song] = []
+    var currentSongPtr : Int?
+    var readyForNextSong : Bool = false
     
     @IBOutlet weak var songTableView: UITableView!
     @IBOutlet weak var navigationBar: UINavigationItem!
@@ -25,19 +29,57 @@ class PartyViewController: UIViewController {
 
         if self.party?.didInitialFBQuery == false { getPlaylist() }
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        // Create observer for when song changes to update collection
+        let tbvc = self.tabBarController  as! EOTPTabBarController
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self,
+                                       selector: #selector(PartyViewController.songChanged),
+                                       name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification,
+                                       object: tbvc.player)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    func songChanged(){
+        print("song changed")
+        print("didSelectSong = \(self.readyForNextSong)")
+        print("currentPtr = \(self.currentSongPtr)")
+        
+        if self.readyForNextSong {
+            
+            if doPlaylistsDiffer() {
+                self.currentPlaylist = (self.party?.playlist)!
+            }
+            
+            self.currentSongPtr! += 1
+            
+            // Indicates end of playlist
+            if currentSongPtr < self.party?.playlist.count {
+                var mediaItemsArr : [MPMediaItem] = []
+                
+                mediaItemsArr.append(self.currentPlaylist[currentSongPtr!].item)
+                
+                updateCollection(mediaItemsArr)
+            } else {
+                print("outside Index")
+            }
 
+
+        } else {
+            print("setting ready to true")
+            self.readyForNextSong = true
+        }
     }
-
     
     func tableView(songTableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = songTableView.dequeueReusableCellWithIdentifier("songCell",forIndexPath: indexPath) as! SongTableViewCell
+        
         
         if  party?.playlist.count != 0 {
             cell.songTitleLabel?.text = party?.playlist[indexPath.row].item.title
@@ -59,9 +101,18 @@ class PartyViewController: UIViewController {
         }
     }
     
+    // Start playing playlist from where user clicks on song
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("cell selected")
-        self.performSegueWithIdentifier("toHostSongPlaying", sender: nil)
+        print("clicked cell")
+        
+        self.readyForNextSong = false
+        // Generate Array of MPMediaItems for collection
+        var mpMediaItemArr : [MPMediaItem] = []
+        self.currentSongPtr = indexPath.row
+        mpMediaItemArr.append((self.party?.playlist[indexPath.row].item)!)
+        
+        updateCollection(mpMediaItemArr)
+        
     }
     
     // Unwind Action after Selecting song in HostAddSongController
@@ -97,6 +148,7 @@ class PartyViewController: UIViewController {
                 }
                 self.party?.didInitialFBQuery = true
                 self.party?.playlist.sortInPlace({ $0.rank > $1.rank }) // sort by rank
+                self.currentPlaylist = (self.party?.playlist)!
                 self.songTableView.reloadData()
             }
             
@@ -118,17 +170,39 @@ class PartyViewController: UIViewController {
             song.rank = Int(newRank!)!
             self.party?.playlist.sortInPlace({ $0.rank > $1.rank }) // sort playlist by song rank
             self.songTableView.reloadData()
+            
+            print("Checking Playlists in from observer")
+            print(self.doPlaylistsDiffer())
         })
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toHostSongPlaying" {
-            if let songPlayingVC = segue.destinationViewController as? HostSongPlayingViewController {
-                songPlayingVC.party = self.party
-            }
-            
-        }
+    func updateCollection(mediaItemsArr : [MPMediaItem]){
+        
+        // Reset the current collection of songs
+        let tbvc = self.tabBarController  as! EOTPTabBarController
+        //tbvc.clearCollection()
+        
+        // Update the collection and start playing
+        let collection = MPMediaItemCollection(items: mediaItemsArr)
+        tbvc.player.setQueueWithItemCollection(collection)
+        tbvc.player.play()
+        
+        print("Update Collection finished")
+        self.readyForNextSong = false
+
+        
     }
+    
+    func doPlaylistsDiffer() -> Bool {
+        for index in 0...(self.party?.playlist.count)!-1 {
+            if (self.currentPlaylist[index].item)! != self.party?.playlist[index].item {
+                return true
+            }
+        }
+        return false
+    }
+    
+    
 
 }
 

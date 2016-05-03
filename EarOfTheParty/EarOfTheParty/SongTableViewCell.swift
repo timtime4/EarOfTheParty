@@ -14,7 +14,6 @@ class SongTableViewCell: UITableViewCell {
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var upVoteButton: UIButton!
     @IBOutlet weak var downVoteButton: UIButton!
-    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var ablumLabel: UILabel!
     @IBOutlet weak var songTitleLabel: UILabel!

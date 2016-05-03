@@ -42,14 +42,6 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMk-PQ-4Al" userLabel="Delete Button">
-                        <rect key="frame" x="528" y="24" width="24" height="23.5"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="24" id="Tyh-PI-mNU"/>
-                            <constraint firstAttribute="height" constant="24" id="cgG-6l-Txw"/>
-                        </constraints>
-                        <state key="normal" title="Button" image="Delete-50"/>
-                    </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYR-Gh-KlQ" userLabel="DownVote Button">
                         <rect key="frame" x="502" y="24" width="24" height="24"/>
                         <constraints>
@@ -76,12 +68,10 @@
                 <constraints>
                     <constraint firstItem="ZYt-LF-sAD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6A6-rH-hcT"/>
                     <constraint firstItem="CnE-AF-cA1" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6fc-S7-fkd"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="UYR-Gh-KlQ" secondAttribute="trailing" constant="26" id="7ht-JA-WlJ"/>
                     <constraint firstAttribute="leadingMargin" secondItem="DHC-5l-R8v" secondAttribute="leading" id="9yr-rU-BTD"/>
-                    <constraint firstItem="TMk-PQ-4Al" firstAttribute="leading" secondItem="UYR-Gh-KlQ" secondAttribute="trailing" constant="2" id="BIP-WC-mLP"/>
                     <constraint firstAttribute="leadingMargin" secondItem="Ttl-0H-MOr" secondAttribute="leading" id="JVL-4P-h4n"/>
                     <constraint firstItem="CnE-AF-cA1" firstAttribute="leading" secondItem="ZYt-LF-sAD" secondAttribute="trailing" constant="8.5" id="PKC-u7-o7m"/>
-                    <constraint firstItem="TMk-PQ-4Al" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="RNv-kd-4Kt"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="TMk-PQ-4Al" secondAttribute="trailing" id="X1u-lW-1SA"/>
                     <constraint firstAttribute="topMargin" secondItem="DHC-5l-R8v" secondAttribute="top" id="o0y-dj-D2G"/>
                     <constraint firstAttribute="leadingMargin" secondItem="4Hh-TA-vKg" secondAttribute="leading" id="oZv-bn-mRN"/>
                     <constraint firstItem="UYR-Gh-KlQ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="p3U-y6-b27"/>
@@ -93,7 +83,6 @@
             <connections>
                 <outlet property="albumLabel" destination="4Hh-TA-vKg" id="aQw-Z9-ROB"/>
                 <outlet property="artistLabel" destination="Ttl-0H-MOr" id="ZuM-E7-9y2"/>
-                <outlet property="deleteButton" destination="TMk-PQ-4Al" id="4H2-4I-WeT"/>
                 <outlet property="downVoteButton" destination="UYR-Gh-KlQ" id="S0i-4N-jy3"/>
                 <outlet property="rankLabel" destination="ZYt-LF-sAD" id="OKj-2h-E5K"/>
                 <outlet property="songTitleLabel" destination="DHC-5l-R8v" id="gVO-oH-ZFd"/>
@@ -103,7 +92,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Delete-50" width="50" height="50"/>
         <image name="Down Filled-50" width="50" height="50"/>
         <image name="Up Filled-50" width="50" height="50"/>
     </resources>

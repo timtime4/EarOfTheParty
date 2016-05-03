@@ -18,20 +18,7 @@ class HostSongPlayingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        
-        do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-            print("AVAudioSession Category Playback OK")
-            do {
-                try AVAudioSession.sharedInstance().setActive(true)
-                print("AVAudioSession is Active")
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
+        let tbvc = self.tabBarController  as! EOTPTabBarController
         
         /* Generate Array of MPMediaItems for collection */
         
@@ -41,9 +28,8 @@ class HostSongPlayingViewController: UIViewController {
         
         let collection = MPMediaItemCollection(items: mpMediaItemArr)
         print(collection.items)
-        let player = MPMusicPlayerController()
-        player.setQueueWithItemCollection(collection)
-        player.play()
+        tbvc.player.setQueueWithItemCollection(collection)
+        tbvc.player.play()
     }
 
     override func didReceiveMemoryWarning() {

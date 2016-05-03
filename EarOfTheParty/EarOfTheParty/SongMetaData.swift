@@ -12,11 +12,15 @@ class SongMetaData {
     var songTitle : String!
     var rank : Int = 1
     var songID : String!
+    var album : String!
+    var artist : String!
     
-    init(_title : String, _rank : String, _songID : String){
+    init(_title : String, _rank : String, _songID : String, _artist : String, _album : String){
         songTitle = _title
         rank = Int(_rank)!
         songID = _songID
+        album = _album
+        artist = _artist
     }
     
     func upVoteDict() -> AnyObject {
@@ -24,7 +28,9 @@ class SongMetaData {
         return [
             "id": songID,
             "rank": String(rank),
-            "songTitle": songTitle
+            "songTitle": songTitle,
+            "artist" : artist,
+            "album" : album
         ]
     }
     
@@ -33,7 +39,9 @@ class SongMetaData {
         return [
             "id": songID,
             "rank": String(rank),
-            "songTitle": songTitle
+            "songTitle": songTitle,
+            "artist" : artist,
+            "album" : album
         ]
     }
 }

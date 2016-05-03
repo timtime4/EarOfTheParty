@@ -55,6 +55,7 @@ class AttendingViewController: UIViewController {
     // Unwind action after selecting party in Join Party Table View Controller
     @IBAction func joinSelectedParty(segue: UIStoryboardSegue){
         if let joinPartyVC = segue.sourceViewController as? JoinPartyTableViewController {
+            print("In attending VC")
             let selectedPartyMetaData = joinPartyVC.selectedParty!
             print(selectedPartyMetaData)
             self.user?.partiesAttending.append(selectedPartyMetaData)
@@ -62,7 +63,7 @@ class AttendingViewController: UIViewController {
             // Add party to party Firebase DB
             let path = "users/\(self.user!.uid)/partiesAttending/\(selectedPartyMetaData.partyID!)"
             let partyRef = self.ref.childByAppendingPath(path)
-            partyRef.setValue(selectedPartyMetaData)
+            partyRef.setValue(selectedPartyMetaData.returnDict())
              
             self.partiesAttendingTableView.reloadData()
         }

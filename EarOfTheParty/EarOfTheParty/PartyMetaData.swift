@@ -24,4 +24,13 @@ class PartyMetaData {
         hostID = _hostID
         hostEmail = _hostEmail
     }
+    
+    func returnDict() -> AnyObject {
+        return [
+            "name": name,
+            "partyID": partyID,
+            "hostID": hostID,
+            "hostEmail" : hostEmail,
+        ]
+    }
 }

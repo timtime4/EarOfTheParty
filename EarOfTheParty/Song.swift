@@ -14,12 +14,16 @@ class Song {
     var songTitle : String!
     var rank : Int = 1
     var songID : UInt64!   // Unique Song Identifier
+    var album : String!
+    var artist : String!
     
     // Used for adding new songs to Firebase
     init(_item : MPMediaItem){
         item = _item
         songTitle = _item.title
         songID = _item.persistentID
+        album = _item.albumTitle
+        artist = _item.artist
     }
     
     // Used for populating data from Firebase DB
@@ -55,7 +59,31 @@ class Song {
         return [
             "songTitle": songTitle,
             "id": songID.description,
-            "rank" : rank
+            "rank" : rank,
+            "album" : album,
+            "artist" : artist
+        ]
+    }
+    
+    func upVoteDict() -> AnyObject {
+        rank = rank + 1
+        return [
+            "songTitle": songTitle,
+            "id": songID.description,
+            "rank" : rank,
+            "album" : album,
+            "artist" : artist
+        ]
+    }
+    
+    func downVoteDict() -> AnyObject {
+        rank = rank - 1
+        return [
+            "songTitle": songTitle,
+            "id": songID.description,
+            "rank" : rank,
+            "album" : album,
+            "artist" : artist
         ]
     }
 }

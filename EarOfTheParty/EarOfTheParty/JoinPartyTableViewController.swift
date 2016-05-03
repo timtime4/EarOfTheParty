@@ -65,8 +65,8 @@ class JoinPartyTableViewController: UITableViewController {
                         party["hostID"] != self.user.uid */ {
                         let newParty = PartyMetaData(
                             _name : party["name"].stringValue,
-                            _partyID : party["hostID"].stringValue,
-                            _hostID : party["partyID"].stringValue,
+                            _partyID : party["partyID"].stringValue,
+                            _hostID : party["hostID"].stringValue,
                             _hostEmail : party["hostedByUser"].stringValue
                         )
                         self.matchParties.append(newParty)
