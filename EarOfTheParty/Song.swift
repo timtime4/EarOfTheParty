@@ -23,11 +23,12 @@ class Song {
     }
     
     // Used for populating data from Firebase DB
-    init(_songID: String){
+    init(_songID: String, _rank : String){
         item = findSongWithPersistentIdString(_songID)
         if item != nil {
             songTitle = item.title
             songID = item.persistentID
+            rank = Int(_rank)!
         } else {
             print("couldn't find song")
         }

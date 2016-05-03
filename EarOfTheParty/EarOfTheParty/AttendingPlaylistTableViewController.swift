@@ -69,6 +69,7 @@ class AttendingPlaylistTableViewController: UITableViewController {
             cell.songTitleLabel?.text = party?.playlist[indexPath.row].songTitle
             cell.albumLabel?.text = party?.playlist[indexPath.row].songTitle
             cell.artistLabel?.text = party?.playlist[indexPath.row].songTitle
+            cell.rankLabel?.text = String(party!.playlist[indexPath.row].rank)
         }
         
     }
@@ -90,6 +91,8 @@ class AttendingPlaylistTableViewController: UITableViewController {
         let songRef = self.ref.childByAppendingPath("users/\(self.party!.hostID)/partiesHosting/\(self.party!.partyID)/songs/\(self.party!.playlist[buttonRow].songID)")
         songRef.setValue(self.party!.playlist[buttonRow].downVoteDict())
         
+        self.party?.playlist.sortInPlace({ $0.rank > $1.rank })
+        
         self.tableView.reloadData()
     }
     
@@ -100,6 +103,8 @@ class AttendingPlaylistTableViewController: UITableViewController {
         // Decrease Rank on song
         let songRef = self.ref.childByAppendingPath("users/\(self.party!.hostID)/partiesHosting/\(self.party!.partyID)/songs/\(self.party!.playlist[buttonRow].songID)")
         songRef.setValue(self.party!.playlist[buttonRow].upVoteDict())
+        
+        self.party?.playlist.sortInPlace({ $0.rank > $1.rank })
         
         self.tableView.reloadData()
     }
@@ -123,6 +128,7 @@ class AttendingPlaylistTableViewController: UITableViewController {
                     self.party!.playlist.append(newSong)
                 }
                 self.party?.didInitialFBQuery = true
+                self.party?.playlist.sortInPlace({ $0.rank > $1.rank }) // sort by rank
                 self.tableView.reloadData()
             }
             

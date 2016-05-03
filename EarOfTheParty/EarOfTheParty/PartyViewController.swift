@@ -28,16 +28,10 @@ class PartyViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("hostDownVote:"), name: "downVoteButtonPress", object: nil)
-    }
-    
-    
-    override func viewWillDisappear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "downVoteButtonPress", object: nil)
+
     }
 
     
@@ -49,6 +43,7 @@ class PartyViewController: UIViewController {
             cell.songTitleLabel?.text = party?.playlist[indexPath.row].item.title
             cell.albumLabel?.text = party?.playlist[indexPath.row].item.albumTitle
             cell.artistLabel?.text = party?.playlist[indexPath.row].item.artist
+            cell.rankLabel?.text = String(party!.playlist[indexPath.row].rank)
         }
         
         return cell
@@ -78,9 +73,6 @@ class PartyViewController: UIViewController {
         }
     }
     
-    func hostDownVote(data:NSNotification) -> Void {
-        print("Host down vote pressed")
-    }
     
     // Grab playlist from Firebase
     func getPlaylist() -> Void {
@@ -94,10 +86,12 @@ class PartyViewController: UIViewController {
                 let json = JSON(data)
                 
                 for(_, song) in json["songs"] {
-                    let newSong = Song(_songID: song["id"].stringValue)
+                    let newSong = Song(_songID: song["id"].stringValue, _rank : song["rank"].stringValue)
+                    self.addObservers(newSong)
                     self.party?.playlist.append(newSong)
                 }
                 self.party?.didInitialFBQuery = true
+                self.party?.playlist.sortInPlace({ $0.rank > $1.rank }) // sort by rank
                 self.songTableView.reloadData()
             }
             
@@ -107,5 +101,23 @@ class PartyViewController: UIViewController {
         })
     }
 
+    
+    func addObservers(song : Song){
+        // Get a reference to our posts
+        let path = "users/\(self.party!.host!.uid)/partiesHosting/\(self.party!.partyID)/songs/\(song.songID)"
+        
+        print(path)
+        let playlistRef = self.ref.childByAppendingPath(path)
+        // Get the data on a post that has changed
+        playlistRef.observeEventType(.ChildChanged, withBlock: { snapshot in
+            let newRank = snapshot.value as? String
+            song.rank = Int(newRank!)!
+            self.party?.playlist.sortInPlace({ $0.rank > $1.rank }) // sort by rank
+            self.songTableView.reloadData()
+        })
+        
+    }
 
 }
+
+

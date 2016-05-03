@@ -203,6 +203,11 @@
 					5E4B63B41CBC13320071926A = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = N8HY8WFG95;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
